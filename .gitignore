@@ -7,6 +7,6 @@ out/
 .svn
 log/*.log
 tmp/**
-reveal.js/node_modules/
+**/node_modules/
 reveal.js/examples/
 .sass-cache
