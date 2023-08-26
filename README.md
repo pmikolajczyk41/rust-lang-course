@@ -11,4 +11,4 @@ make install
 make run
 ```
 
-_Uwaga: obecnie nie ma możliwości serwowania prezentacji statycznie._ 
+Najnowsza wersja jest dostępna online pod adresem: https://rust-lang-course.on.fleek.co/.
