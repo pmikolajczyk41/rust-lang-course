@@ -45,3 +45,28 @@
 
 **8 I** (12<sup>00</sup> - 14<sup>00</sup>, _zdalnie_) |
 **22 I** (12<sup>00</sup> - 13<sup>00</sup>, _zdalnie_)
+
+---
+
+# Warunki zaliczenia
+
+<rc-cols>
+<rc-col left fat>
+
+Wyłącznie na podstawie zadań na Satori:
+ - 5 zadań **obowiązkowych**, równo punktowanych (za każde można dostać 1pkt)
+ - punkt można otrzymać jeśli poprawne rozwiązanie zostanie wysłane w ciągu ~2 tygodni od publikacji zadania
+ - rozwiązania można wysyłać do 21. stycznia 23:59
+
+</rc-col>
+<rc-col right>
+
+< 3pkt → 2
+
+3pkt → 3 
+
+4pkt → 4 
+
+5pkt → 5
+</rc-col>
+</rc-cols>
