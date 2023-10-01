@@ -11,6 +11,42 @@
 @import 'layout';
 
 /*********************************************
+ * CUSTOM STYLES
+ *********************************************/
+
+rc-cols {
+	margin: var(--r-block-margin);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--r-padding) * 2);
+}
+
+rc-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+rc-col[left] {
+  align-items: left;
+	text-align: left;
+}
+
+rc-col[center] {
+  align-items: center;
+	text-align: center;
+}
+
+rc-col[right] {
+  align-items: right;
+	text-align: right;
+}
+
+rc-col[fat] {
+  flex: 3
+}
+
+/*********************************************
  * GLOBAL STYLES
  *********************************************/
 
