@@ -106,3 +106,10 @@ Wyłącznie na podstawie zadań na Satori:
 
 ### Forum
  - [forum dla kursu](https://forum.tcs.uj.edu.pl/c/ia-23-24-zima/rust-24/341)
+
+---
+
+# Termin konsultacji
+
+- piątki 8<sup>30</sup>-10<sup>00</sup> - proszę umawiać się z wyprzedzeniem
+- możliwe inne terminy po wcześniejszym uzgodnieniu
