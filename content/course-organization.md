@@ -73,6 +73,23 @@ Wyłącznie na podstawie zadań na Satori:
 
 ---
 
+# Warunki zaliczenia poprawkowego
+
+**Nietrywialna** kontrybucja do jednego z repozytoriów:
+ - https://github.com/rust-lang/rust
+ - https://github.com/rust-lang/cargo
+ - https://github.com/tokio-rs/tokio
+
+---
+
+# Samodzielność
+
+**Zabronione** jest:
+ - korzystanie z asysty AI (Github Copilot, Chat GPT, Bard, ...)
+ - udostępnianie swojego kodu
+
+---
+
 # Materiały i linki
 
 ### Treści zadań obowiązkowych, materiały na laboratoria
