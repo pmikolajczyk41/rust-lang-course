@@ -54,7 +54,7 @@
 <rc-col left fat>
 
 Wyłącznie na podstawie zadań na Satori:
- - 5 zadań **obowiązkowych**, równo punktowanych (za każde można dostać 1pkt)
+ - 5 zadań **obowiązkowych**, równo punktowanych (za każde można dostać 0pkt lub 1pkt)
  - punkt można otrzymać jeśli poprawne rozwiązanie zostanie wysłane w ciągu ~2 tygodni od publikacji zadania
  - rozwiązania można wysyłać do 21. stycznia 23:59
 
@@ -70,3 +70,22 @@ Wyłącznie na podstawie zadań na Satori:
 5pkt → 5
 </rc-col>
 </rc-cols>
+
+---
+
+# Materiały i linki
+
+### Treści zadań obowiązkowych, materiały na laboratoria
+- [Satori](https://satori.tcs.uj.edu.pl/contest/8677128/)
+
+ ---
+
+### Slajdy
+
+ - https://rust-lang-course.on.fleek.co/
+ - [źródło](https://github.com/pmikolajczyk41/rust-lang-course)
+
+ ---
+
+### Forum
+ - [forum dla kursu](https://forum.tcs.uj.edu.pl/c/ia-23-24-zima/rust-24/341)
