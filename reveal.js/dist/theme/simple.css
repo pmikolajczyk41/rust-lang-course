@@ -17,7 +17,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 :root {
   --r-background-color: #fff;
   --r-main-font: Lato, sans-serif;
-  --r-main-font-size: 40px;
+  --r-main-font-size: 30px;
   --r-main-color: #000;
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
@@ -29,9 +29,9 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   --r-heading-text-shadow: none;
   --r-heading-font-weight: normal;
   --r-heading1-text-shadow: none;
-  --r-heading1-size: 3.77em;
-  --r-heading2-size: 2.11em;
-  --r-heading3-size: 1.55em;
+  --r-heading1-size: 3em;
+  --r-heading2-size: 2em;
+  --r-heading3-size: 1.5em;
   --r-heading4-size: 1em;
   --r-code-font: monospace;
   --r-link-color: #00008B;
