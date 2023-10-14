@@ -68,3 +68,163 @@ fn main() {
 Pełna dokumentacja: https://doc.rust-lang.org/rust-by-example/primitives.html
 
 ---
+
+# Argumenty funkcji i zwracane wartości
+
+```rust[1-3|]
+fn increment(x: u8) -> u8 {
+    return x + 1;
+}
+
+fn greet(times: u8) {
+    println!("Be greeted {times} times!")
+}
+
+fn main() {
+    greet(increment(0));
+}
+```
+
+---
+
+# Zwracanie wartości
+
+```rust
+fn increment(x: u8) -> u8 {
+    return x + 1;
+}
+
+fn increment(x: u8) -> u8 {
+    x + 1
+}
+```
+ ---
+Ostatnia linia w bloku definiuje zwracaną wartość.
+
+---
+
+# 'Brak' zwracanej wartości
+
+```rust
+fn greet() {
+    // pomiędzy ostatnim średnikiem a nawiasem klamrowym nie ma żadnej wartości,
+    // więc implicite funkcja zwraca `()`
+    println!("Hello, world!");
+}
+
+fn greet() {
+    println!("Hello, world!") // średnik nie jest potrzebny, `println!` zwraca `()`
+}
+
+fn greet() -> () { // explicite zwracany typ `()`
+    println!("Hello, world!");
+}
+
+fn greet() -> () { // explicite zwracany typ `()`
+    return println!("Hello, world!"); // explicite instrukcja `return`
+}
+```
+
+---
+
+# Makra
+
+```rust
+fn main() {
+    println!("Hello, world!");
+    assert!(true);
+    assert_eq!(1, 2 - 1);
+}
+```
+
+---
+
+# Wypisywanie tekstu na stdout
+
+```rust
+fn printing(x: u8) {
+    println!("{}", x);
+    println!("{x}");
+    println!("{}", x + 1);
+    // println!("{x + 1}"); // błąd kompilacji
+}
+```
+
+ ---
+Pełna dokumentacja: https://doc.rust-lang.org/std/fmt/
+
+---
+
+# Zmienne
+
+```rust
+fn main() {
+    let x = 1;
+    let y: u8 = 2;
+    let y = -3i128;
+}
+```
+
+---
+
+# Zmienne
+
+```rust
+fn main() {
+    let x = 1;
+    x += 1; // błąd kompilacji
+}
+```
+
+---
+
+# Zmienne mutowalne
+
+```rust
+fn main() {
+    let mut x = 1;
+    x += 1;
+}
+```
+
+---
+
+# Deklaracja i inicjalizacja zmiennej
+
+```rust
+fn main() {
+    let x: u8; // dopóki nie zostanie zainicjalizowana, nie można jej użyć
+    x = 1; // mimo, że `x` nie jest mutowalna, można ją raz zainicjalizować
+}
+```
+
+---
+
+# Stałe
+
+```rust
+const X: u8 = 1;
+const Y: u8 = 2;
+
+fn main() {
+    const Z: u8 = X + Y;
+}
+```
+
+---
+
+# Stałe statyczne
+
+```rust
+static X: u8 = 1;
+static Y: u8 = 2;
+
+fn main() {
+    static Z: u8 = X + Y;
+}
+```
+
+ ---
+Różnica między `const` a `static`: [link](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/const-and-static.html)
+
+---
