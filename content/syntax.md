@@ -14,7 +14,7 @@ fn main() {
 
 # Komentarze
 
-```rust[1,3,5,8-10]
+```rust [1,3,5,8-10]
 //! Dokumentacja węzła zawierającego (inner doc)
 
 /// Dokumentacja węzła poniżej (outer doc)
@@ -71,7 +71,7 @@ Pełna dokumentacja: https://doc.rust-lang.org/rust-by-example/primitives.html
 
 # Argumenty funkcji i zwracane wartości
 
-```rust[1-3|]
+```rust [1-3|]
 fn increment(x: u8) -> u8 {
     return x + 1;
 }
@@ -228,3 +228,169 @@ fn main() {
 Różnica między `const` a `static`: [link](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/const-and-static.html)
 
 ---
+
+# Tworzenie nowych typów: `type`
+
+```rust
+type Byte = u8; // nowa nazwa dla `u8`, nie jest nowym typem
+
+fn main() {
+    let x: Byte = 1;
+    let x: Byte = 1u8;
+}
+```
+
+---
+
+# Tworzenie nowych typów: `struct`
+
+```rust
+struct Point {
+    x: u8,
+    y: u8,
+}
+
+fn main() {
+    let p = Point { x: 1, y: 2 };
+}
+```
+
+---
+
+# Tworzenie nowych typów: `enum`
+
+```rust
+enum Animal {
+    Capybara,
+    Spider,
+    Snek,
+}
+
+fn main() {
+    let roman = Animal::Capybara;
+}
+```
+
+---
+
+# Warianty z danymi
+
+```rust
+enum Point {
+    Cartesian { x: u8, y: u8 },
+    Polar { r: u8, theta: u8 },
+}
+```
+
+---
+
+# Dziedziczenie
+
+<img data-src="content/images/no.png" height="300">
+
+ ---
+Ale polimorfizm nadal jest możliwy. <!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+# Metody
+
+```rust [5-15]
+struct S {
+    x: u8,
+}
+
+impl S {
+    fn new(x: u8) -> Self {
+        S {
+            x: x,
+        }
+    }
+    
+    fn x(&self) -> u8 {
+        self.x
+    }
+}
+```
+
+---
+
+# Metody
+
+```rust [5-17]
+struct S {
+    x: u8,
+}
+
+impl S {
+    fn new(x: u8) -> Self {
+        S {
+            x: x,
+        }
+    }
+}
+
+impl S {
+    fn x(&self) -> u8 {
+        self.x
+    }
+}
+```
+
+---
+
+# Konstrukcja obiektów
+
+```rust [9-10]
+struct S {
+    x: u8,
+    y: u8,
+}
+
+impl S {
+    fn new(x: u8, y_minus_one: u8) -> Self {
+        S {
+            x,
+            y: y_minus_one + 1,
+        }
+    }
+}
+```
+
+---
+
+# Traits
+
+```rust
+trait LegOwner {
+    fn has_legs(&self) -> bool {
+        true // domyślna implementacja
+    }
+    
+    fn number_of_legs(&self) -> u8; // brak domyślnej implementacji
+}
+```
+
+---
+
+# Implementacja traitów
+
+```rust [9-17]
+trait LegOwner { /**/ }
+
+enum Animal {
+    Capybara,
+    Spider,
+    Snek,
+}
+
+impl LegOwner for Animal {
+    fn number_of_legs(&self) -> u8 {
+        match *self {
+            Animal::Capybara => 4,
+            Animal::Spider => 8,
+            Animal::Snek => 0,
+        }
+    }
+}
+```
