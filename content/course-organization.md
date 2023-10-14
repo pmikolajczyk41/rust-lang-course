@@ -111,5 +111,5 @@ Wyłącznie na podstawie zadań na Satori:
 
 # Termin konsultacji
 
-- piątki 8<sup>30</sup>-10<sup>00</sup> - proszę umawiać się z wyprzedzeniem
+- piątki 8<sup>30</sup>-10<sup>00</sup> (proszę umawiać się z wyprzedzeniem)
 - możliwe inne terminy po wcześniejszym uzgodnieniu

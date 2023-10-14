@@ -16,8 +16,8 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <section data-transition="convex" data-markdown="content/course-organization.md">
-        </section>
+        <section data-transition="convex" data-markdown="content/course-organization.md"></section>
+        <section data-transition="convex" data-markdown="content/syntax.md"></section>
     </div>
 </div>
 
@@ -35,8 +35,8 @@
         hash: true,
 
         plugins: [
-            RevealHighlight,
             RevealMarkdown,
+            RevealHighlight, // needs to be loaded after RevealMarkdown
             RevealMath,
             RevealNotes,
             RevealSearch,
