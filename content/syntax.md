@@ -229,6 +229,68 @@ Różnica między `const` a `static`: [link](https://web.mit.edu/rust-lang_v1.25
 
 ---
 
+# Referencje
+
+```rust
+fn main() {
+    let x = 1;
+    let y = &x;
+    let z = &y;
+    let w = &&x;
+}
+```
+
+---
+
+# Dereferencja
+
+```rust
+fn main() {
+    let x = 1;
+    let y = &x;
+    let z = *y;
+    println!("{} {} {}", *y, y, z);
+}
+```
+
+---
+
+# Zmiana wartości poprzez referencję
+
+```rust
+fn main() {
+    let x = 1;
+    let y = &x;
+    *y = 2; // błąd kompilacji
+}
+```
+
+---
+
+# Zmiana wartości poprzez referencję
+
+```rust
+fn main() {
+    let x = 1;
+    let y = &mut x; // błąd kompilacji
+    *y = 2;
+}
+```
+
+---
+
+# Zmiana wartości poprzez referencję
+
+```rust
+fn main() {
+    let mut x = 1;
+    let y = &mut x;
+    *y = 2;
+}
+```
+
+---
+
 # Tworzenie nowych typów: `type`
 
 ```rust
@@ -293,7 +355,7 @@ Ale polimorfizm nadal jest możliwy. <!-- .element: class="fragment" data-fragme
 
 ---
 
-# Metody
+# Metody i słowo kluczowe `self`
 
 ```rust [5-15]
 struct S {
@@ -315,7 +377,7 @@ impl S {
 
 ---
 
-# Metody
+# Bloki `impl`
 
 ```rust [5-17]
 struct S {
