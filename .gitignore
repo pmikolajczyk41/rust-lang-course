@@ -8,6 +8,8 @@ out/
 log/*.log
 tmp/**
 **/node_modules/
-reveal.js/examples/
+reveal.js/examples
 .sass-cache
-playground/
+
+playground
+notes.txt
