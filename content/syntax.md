@@ -348,7 +348,7 @@ enum Point {
 
 # Dziedziczenie
 
-<img data-src="content/images/no.png" height="300">
+<img data-src="content/images/no-bugs-bunny.png" height="300">
 
  ---
 Ale polimorfizm nadal jest możliwy. <!-- .element: class="fragment" data-fragment-index="1" -->
