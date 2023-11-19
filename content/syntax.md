@@ -12,6 +12,17 @@ fn main() {
 
 ---
 
+# Kompilacja z `rustc`
+
+```shell
+rustc src/main.rs
+./main
+
+> Hello, world!
+```
+
+---
+
 # Komentarze
 
 ```rust [1,3,5,8-10]
@@ -103,6 +114,20 @@ Ostatnia linia w bloku definiuje zwracaną wartość.
 
 ---
 
+# Control flow
+
+```rust
+fn is_even(x: u32) -> bool {
+    if x % 2 == 0 {
+        true
+    } else {
+        false
+    }
+}
+```
+
+---
+
 # 'Brak' zwracanej wartości
 
 ```rust
@@ -152,6 +177,44 @@ fn printing(x: u8) {
 
  ---
 Pełna dokumentacja: https://doc.rust-lang.org/std/fmt/
+
+---
+
+# Panika
+
+```rust
+fn main() {
+    panic!("Aaaaaa!");
+}
+```
+
+---
+
+# Todo
+
+```rust
+fn do_something() {
+    todo!("To be implemented soon")
+}
+
+fn main() {
+    do_something()
+}
+```
+
+---
+
+# Nieosiągalność
+
+```rust
+fn increment_small(x: u32) -> u32 {
+    if x < 2 {
+        x
+    } else {
+        unreachable!("x should never be greater than 1!")
+    }
+}
+```
 
 ---
 
@@ -319,6 +382,20 @@ fn main() {
 
 ---
 
+# Tworzenie nowych typów: krotki
+
+```rust
+struct Point(u8, u8);
+
+fn main() {
+    let p = Point(1, 2);
+    let x = p.0;
+    let y = p.1;
+}
+```
+
+---
+
 # Tworzenie nowych typów: `enum`
 
 ```rust
@@ -415,6 +492,32 @@ impl S {
             x,
             y: y_minus_one + 1,
         }
+    }
+}
+```
+
+---
+
+# Typy generyczne
+
+```rust
+struct Triple<T> {
+    content: [T; 3],
+}
+```
+
+---
+
+# Typy generyczne
+
+```rust[5]
+struct Triple<T> {
+    content: [T; 3],
+}
+
+impl<T> Triple<T> {
+    pub fn new(x: T, y: T, z: T) -> Self {
+        todo!()
     }
 }
 ```
