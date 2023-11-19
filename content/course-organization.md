@@ -53,10 +53,14 @@
 <rc-cols>
 <rc-col left fat>
 
-Wyłącznie na podstawie zadań na Satori:
- - 5 zadań **obowiązkowych**, równo punktowanych (za każde można dostać 0pkt lub 1pkt)
- - punkt można otrzymać jeśli poprawne rozwiązanie zostanie wysłane w ciągu ~2 tygodni od publikacji zadania
- - rozwiązania można wysyłać do 21. stycznia 23:59
+Satori:
+ - 4 **obowiązkowe** zadania, równo punktowane (za każde można dostać 0pkt lub 1pkt).
+ - Punkt można otrzymać jeśli poprawne rozwiązanie zostanie wysłane w ciągu ~2 tygodni od publikacji zadania.
+ - Rozwiązania trzeba wysyłać do 21. stycznia 23:59.
+
+Laboratoria:
+ - Wypełnienie min. celu 3 laboratoriów to 0.5pkt.
+ - Wypełnienie min. celu 5 laboratoriów to 1pkt.
 
 </rc-col>
 <rc-col right>
@@ -65,7 +69,11 @@ Wyłącznie na podstawie zadań na Satori:
 
 3pkt → 3 
 
+3.5pkt → 3.5
+
 4pkt → 4 
+
+4.5pkt → 4.5
 
 5pkt → 5
 </rc-col>
