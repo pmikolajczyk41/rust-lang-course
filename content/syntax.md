@@ -114,20 +114,6 @@ Ostatnia linia w bloku definiuje zwracaną wartość.
 
 ---
 
-# Control flow
-
-```rust
-fn is_even(x: u32) -> bool {
-    if x % 2 == 0 {
-        true
-    } else {
-        false
-    }
-}
-```
-
----
-
 # 'Brak' zwracanej wartości
 
 ```rust
@@ -149,6 +135,60 @@ fn greet() -> () { // explicite zwracany typ `()`
     return println!("Hello, world!"); // explicite instrukcja `return`
 }
 ```
+
+---
+
+# Control flow
+
+```rust
+fn is_even(x: u32) -> bool {
+    if x % 2 == 0 {
+        true
+    } else {
+        false
+    }
+}
+```
+---
+
+# Pętle
+
+```rust
+loop {
+    println!("Woohoo!")
+}
+```
+---
+
+# Pętle
+
+```rust
+while i < 10 {
+    // ..
+}
+```
+
+---
+
+# Pętle
+
+```rust
+for i in some_collection {
+    // ..
+}
+```
+
+---
+
+# Pętle
+
+```rust
+for i in some_collection {
+    // ..
+}
+```
+ ---
+We wszystkich typach pętli można używać instrukcji `continue` i `break`.
 
 ---
 
@@ -524,7 +564,53 @@ impl<T> Triple<T> {
 
 ---
 
-# Traits
+# `Option`
+
+```rust
+struct Point { x: i32, y: i32 }
+
+struct PointBuilder {
+    x: Option<i32>,
+    y: Option<i32>,
+}
+```
+
+---
+
+# `Result`
+
+```rust
+fn fallible_function() -> Result<u32, String> {
+    if !check_conditions() {
+        Err("Conditions were not met")
+    } else {
+        Ok(41)
+    }
+}
+```
+
+---
+
+# Operator `?`
+
+```rust
+fn check_conditions() -> Result<bool, String> {
+    if .. {
+        Ok(true)
+    } else {
+        Err("Conditions were not met")
+    }
+}
+
+fn fallible_function() -> Result<u32, String> {
+    check_conditions()?;
+    Ok(41)
+}
+```
+
+---
+
+# Traity
 
 ```rust
 trait LegOwner {
@@ -559,3 +645,37 @@ impl LegOwner for Animal {
     }
 }
 ```
+
+---
+
+# Traity a generyczność
+
+```rust
+trait A<T> {
+    fn fun(t: T);
+}
+
+trait B {
+    fn fun<T>(t: T);
+}
+
+trait C {
+    type T;
+    
+    fn fun(t: Self::T);
+}
+```
+
+---
+
+# Domyślna derywacja
+```rust
+trait Eq {}
+
+#[derive(Eq)]
+struct S {
+    value: u32
+}
+```
+
+---

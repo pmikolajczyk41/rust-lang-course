@@ -2,10 +2,6 @@
 
 ## Wprowadzenie i podstawy
 
-- Organizacja kursu
-  - terminy spotkań
-  - warunki zaliczenia
-  - dostęp do materiałów
 - Historia i motywacja języka
 - Wyróżniki języka
 - Składnia, konstrukcje językowe
