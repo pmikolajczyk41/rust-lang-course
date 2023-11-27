@@ -81,6 +81,13 @@ Laboratoria:
 
 ---
 
+# Obecność
+
+- Obecność na wykładach nie jest obowiązkowa.
+- Obecność na laboratoriach jest obowiązkowa (1 nieobecność dopuszczalna).
+
+---
+
 # Warunki zaliczenia poprawkowego
 
 **Nietrywialna** kontrybucja do jednego z repozytoriów:
