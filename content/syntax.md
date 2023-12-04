@@ -394,6 +394,12 @@ fn main() {
 
 ---
 
+# Złota zasada Rusta
+
+*Jednocześnie można mieć tylko jedną mutującą referencję **albo** wiele niemutujących.*
+
+---
+
 # Tworzenie nowych typów: `type`
 
 ```rust
