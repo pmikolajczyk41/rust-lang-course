@@ -686,6 +686,64 @@ struct S {
 
 ---
 
+# Scoping traitów
+
+```rust
+trait A {
+    fn fun(&self) {}
+}
+trait B {
+    fn fun(&self) {}
+}
+
+struct S;
+
+impl A for S {}
+impl B for S {}
+
+fn main() {
+    let s = S;
+    s.fun();
+}
+```
+
+---
+
+# Trait bounds
+
+```rust
+trait A {}
+trait B {}
+
+fn fun<T: A + B>(t: T) {}
+```
+
+---
+
+# Trait bounds (`where`)
+
+```rust
+trait A {}
+trait B {}
+
+fn fun<T>(t: T) where T: A + B {}
+```
+
+---
+
+# Trait bounds
+
+```rust
+trait A {
+    type T;
+}
+
+fn fun<T: A>(t: T) where <T as A>::T: std::fmt::Debug {}
+fn gun<T: A<T=i32>>(t: T) where {}
+```
+
+---
+
 # Podstawowe traity
 
 - `Eq`, `PartialEq`
@@ -1047,5 +1105,76 @@ fn prefix(s: String) -> impl Fn(&str) {
 
 fn main() {
     prefix("Hello".to_string())("there");
+}
+```
+
+---
+
+# `impl Trait`: argument
+
+```rust
+fn f(x: impl std::fmt::Debug) {
+    println!("Got {x:?}");
+}
+
+fn main() {
+    f(1);
+    f("Hello");
+}
+```
+
+---
+
+# `impl Trait`: zwracana wartość
+
+```rust
+fn f() -> impl std::fmt::Debug {
+    1
+}
+
+fn main() {
+    println!("{:?}", f());
+}
+```
+
+---
+
+# const generics
+
+```rust
+struct Array<const N: usize> {
+    content: [u8; N],
+}
+
+fn main() {
+    let _a = Array::<3> { content: [1, 2, 3] };
+    let _b = Array::<4> { content: [1, 2, 3, 4] };
+}
+```
+
+---
+
+# `if let`
+
+```rust
+fn main() {
+    let x = Some(1);
+    if let Some(y) = x {
+        println!("{y}");
+    }
+}
+```
+
+---
+
+# `let else`
+
+```rust
+fn main() {
+    let s = "12";
+    let Ok(twelve) = s.parse::<u8>() else {
+        panic!("Not a number");
+    };
+    println!("{twelve}");
 }
 ```
