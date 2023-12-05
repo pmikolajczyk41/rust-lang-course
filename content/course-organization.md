@@ -20,11 +20,11 @@
 
 ## Laby (gr. 1)
 **27 XI** (10<sup>15</sup> - 11<sup>45</sup>) |
-**4 XII** (10<sup>15</sup> - 11<sup>45</sup>) | 
-**8 XII** (18<sup>00</sup> - 19<sup>30</sup>)
+**4 XII** (10<sup>15</sup> - 11<sup>45</sup>)
 
-**11 XII** (10<sup>15</sup> - 11<sup>45</sup>) |
-**18 XII** (10<sup>15</sup> - 11<sup>45</sup>) |
+**11 XII** (10<sup>15</sup> - 11<sup>45</sup>, 18<sup>00</sup> - 19<sup>30</sup>) |
+**18 XII** (10<sup>15</sup> - 11<sup>45</sup>)
+
 **19 XII** (18<sup>00</sup> - 19<sup>30</sup>)
 
 **8 I** (_zdalnie, termin do ustalenia_) |
