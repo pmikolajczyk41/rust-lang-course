@@ -685,3 +685,367 @@ struct S {
 ```
 
 ---
+
+# Podstawowe traity
+
+- `Eq`, `PartialEq`
+- `Ord`, `PartialOrd`
+- `Debug`, `Display`
+- `Default`
+- `Hash`
+- `Iterator`, `IntoIterator`
+- `From`, `Into`
+- operatory
+- `Copy`, `Clone`
+
+---
+
+# `Eq` / `PartialEq`
+
+(częściowa) relacja równoważności
+
+
+```rust
+fn main() {
+    assert_eq!(f32::MAX, f32::MAX);
+    assert_ne!(f32::NAN, f32::NAN);
+}
+```
+
+---
+
+# `Ord` / `PartialOrd`
+
+porządek liniowy vs porządek częściowy
+
+---
+
+# `Debug`
+
+```rust
+struct Point { x: i32, y: i32 }
+
+impl std::fmt::Debug for Point {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Point {{ x: {}, y: {} }}", self.x, self.y)
+    }
+}
+
+fn main() {
+    println!("{:?}", Point { x: 1, y: 2 });
+}
+```
+
+---
+
+# `Debug`
+
+```rust
+struct Point { x: i32, y: i32 }
+
+impl std::fmt::Debug for Point {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Point")
+            .field("x", &self.x)
+            .field("y", &self.y)
+            .finish()
+    }
+}
+
+fn main() {
+    println!("{:?}", Point { x: 1, y: 2 });
+}
+```
+
+---
+
+# `Display`
+
+```rust
+#[derive(Debug)]
+struct Point { x: i32, y: i32 }
+
+impl std::fmt::Display for Point {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "({}, {})", self.x, self.y)
+    }
+}
+
+fn main() {
+    let p = Point { x: 1, y: 2 };
+    println!("{p}");
+    println!("{p:?}");
+}
+```
+
+---
+
+# `Default`
+
+```rust
+struct Point { x: i32, y: i32 }
+
+impl Default for Point {
+    fn default() -> Self {
+        Point { x: 0, y: 0 }
+    }
+}
+```
+
+---
+
+# `Hash`
+
+```rust
+struct Point { x: i32, y: i32, visited: bool }
+
+impl std::hash::Hash for Point {
+    fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
+        self.x.hash(state);
+        self.y.hash(state);
+        // ignorujemy `self.visited`
+    }
+}
+```
+
+---
+
+# `Iterator`
+
+```rust
+struct PowersOfTwo(u32);
+
+impl PowersOfTwo {
+    fn new() -> Self {
+        PowersOfTwo(1)
+    }
+}
+
+impl Iterator for PowersOfTwo {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let old = self.0;;
+        self.0 *= 2;
+        Some(old)
+    }
+}
+```
+
+---
+
+# `IntoIterator`
+
+```rust
+struct TwoDimGrid {
+    width: u32,
+    height: u32,
+}
+
+struct TwoDimGridIterator {
+    grid: TwoDimGrid,
+    x: u32,
+    y: u32,
+}
+
+impl IntoIterator for TwoDimGrid {
+    type Item = (u32, u32);
+    type IntoIter = TwoDimGridIterator;
+
+    fn into_iter(self) -> Self::IntoIter {
+        TwoDimGridIterator {
+            grid: self,
+            x: 0,
+            y: 0,
+        }
+    }
+}
+
+impl Iterator for TwoDimGridIterator {
+    type Item = (u32, u32);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        todo!()
+    }
+}
+```
+
+---
+
+# Przeciążanie operatorów
+
+```rust
+struct Point { x: i32, y: i32 }
+
+impl std::ops::Add for Point {
+    type Output = Self;
+
+    fn add(self, other: Self) -> Self {
+        Self {x: self.x + other.x, y: self.y + other.y}
+    }
+}
+```
+
+---
+
+# `From` / `Into`
+
+```rust[1-8]
+struct LowerCaseString(String);
+struct UpperCaseString(String);
+
+impl From<LowerCaseString> for UpperCaseString {
+    fn from(s: LowerCaseString) -> Self {
+        UpperCaseString(s.0.to_uppercase())
+    }
+}
+
+fn main() {
+    let lower = LowerCaseString("hello".to_string());
+    let upper: UpperCaseString = lower.into();
+    println!("{}", upper.0);
+
+    let lower = LowerCaseString("world".to_string());
+    let upper = UpperCaseString::from(lower);
+    println!("{}", upper.0);
+}
+```
+
+---
+
+# `From` / `Into`
+
+```rust[10-18]
+struct LowerCaseString(String);
+struct UpperCaseString(String);
+
+impl From<LowerCaseString> for UpperCaseString {
+    fn from(s: LowerCaseString) -> Self {
+        UpperCaseString(s.0.to_uppercase())
+    }
+}
+
+fn main() {
+    let lower = LowerCaseString("hello".to_string());
+    let upper: UpperCaseString = lower.into();
+    println!("{}", upper.0);
+
+    let lower = LowerCaseString("world".to_string());
+    let upper = UpperCaseString::from(lower);
+    println!("{}", upper.0);
+}
+```
+
+---
+
+# Konwersje dla typów podstawowych
+
+```rust
+fn main() {
+    let x = 1u8;
+    let y = x as u16;
+    let z = y as u32;
+}
+```
+
+ --- 
+Więcej przykładów: https://doc.rust-lang.org/rust-by-example/types/cast.html
+
+---
+
+# Move semantics
+
+```rust
+fn main() {
+    let x = 1;
+    let y = x;
+    println!("{x} {y}");
+}
+```
+
+---
+
+# Move semantics
+
+```rust
+#[derive(Debug)]
+struct S(u8);
+
+fn main() {
+    let x = S(1);
+    let y = x;
+    println!("{x:?} {y:?}");
+}
+```
+
+---
+
+# Move semantics
+
+```rust
+#[derive(Debug, Clone)]
+struct S(u8);
+
+fn main() {
+    let x = S(1);
+    let y = x.clone();
+    println!("{x:?} {y:?}");
+}
+```
+
+---
+
+# Move semantics
+
+```rust
+#[derive(Debug, Copy)]
+struct S(u8);
+
+fn main() {
+    let x = S(1);
+    let y = x;
+    println!("{x:?} {y:?}");
+}
+```
+
+---
+
+# Stos a sterta
+
+---
+
+# Closures
+
+```rust
+
+fn main() {
+    let add = |x, y| x + y;
+    let _four = add(1, 3);
+    let add = |x, y| { x + y };
+    let _four = add(1, 3);
+    let add = |x: u8, y: u8| -> u8 { x + y };
+    let _four = add(1, 3);
+}
+```
+
+---
+
+# `Fn`/`FnOnce`/`FnMut`
+
+- `Fn` - nie mutuje ani nie konsumuje przechwyconych zmiennych
+- `FnMut` - mutuje, ale nie konsumuje przechwyconych zmiennych
+- `FnOnce` - konsumuje przechwycone zmienne
+
+---
+
+# Przechwytywanie przez wartość
+
+```rust
+fn prefix(s: String) -> impl Fn(&str) {
+    return move |name| println!("{} {}", s, name)
+}
+
+fn main() {
+    prefix("Hello".to_string())("there");
+}
+```
