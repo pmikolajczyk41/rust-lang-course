@@ -145,3 +145,171 @@ domyślnie wszystko jest prywatne, poza
 - wariantami enuma
 
 ---
+
+# Wersjonowanie
+
+https://semver.org/
+
+---
+
+# Dodawanie zależności
+
+```bash
+cargo add clap
+```
+
+```toml
+[dependencies]
+clap = { version = "=4.4.7" }
+```
+
+---
+
+# Rodzaje zależności
+
+```toml
+[dependencies]
+clap = { version = "=4.4.7" }
+
+[dev-dependencies]
+tokio = "1.34.0"
+
+[build-dependencies]
+cargo = "0.75.1"
+```
+
+---
+
+# Features
+
+```rust
+#[cfg(feature = "derive")]
+mod derivation_utils {
+  // ...
+}
+```
+
+```toml
+[dependencies]
+clap = { version = "=4.4.7", features = ["derive"] }
+```
+
+---
+
+# Features
+
+```toml
+[features]
+feature_1 = []
+```
+
+---
+
+# Features
+
+```toml
+[features]
+feature_1 = []
+feature_2 = ["feature_1"]
+```
+
+---
+
+# Features
+
+```toml
+[dependencies]
+dependency = { version = "0.1.0", optional = true }
+
+[features]
+feature_1 = ["dependency"]
+feature_2 = ["feature_1"]
+```
+
+---
+
+# Features są addytywne
+
+```rust
+#[cfg(all(feature = "std", feature = "no_std"))]
+compile_error!(
+  "Features `std` and `no_std` are mutually exclusive and cannot be used together"
+);
+```
+
+---
+
+# Workspaces
+
+```toml
+[workspace]
+resolver = "2"
+
+members = ["member1", "member2"]
+
+exclude = ["examples/"]
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+readme = "README.md"
+version = "0.1.0"
+
+[workspace.dependencies]
+anyhow = { version = "1.0.71" }
+clap = { version = "4.3.4" }
+```
+
+---
+
+# Workspaces
+
+```toml
+[package]
+name = "member1"
+edition.workspace = true
+license.workspace = true
+readme.workspace = true
+version.workspace = true
+description = "Nice crate"
+
+[dependencies]
+clap = { workspace = true }
+```
+
+---
+
+# Konfiguracja profilu
+
+```toml
+[profile.release]
+panic = "unwind"
+
+[profile.production]
+inherits = "release"
+lto = true
+codegen-units = 1
+```
+
+---
+
+# Rejestr cratów
+
+- https://crates.io/
+- https://docs.rs/
+- https://lib.rs/
+- https://blessed.rs/crates
+
+---
+
+# Cargo
+
+```bash
+cargo build
+cargo run
+cargo install
+cargo publish
+cargo fmt
+cargo clippy
+cargo clean
+```
