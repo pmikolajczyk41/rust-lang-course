@@ -330,3 +330,148 @@ pub fn my_attr(args: TokenStream, item: TokenStream) -> TokenStream {
     codegen(intermediate_representation);
 }
 ```
+
+---
+
+# Unsafe rust
+
+---
+
+# Unsafe rust
+
+- dereferencja wskaźnika
+- wywołanie funkcji `unsafe`
+- zmiana wartości mutowalnej statycznej zmiennej
+- implementacja traita `unsafe`
+- dostęp do pól `union`
+
+---
+
+# Unsafe rust
+
+```rust
+fn main() {
+   let mut x = 5;
+   let p1 = &x as *const i32;
+   let p2 = &mut x as *mut i32;
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+fn main() {
+    let x = 5;
+    let y = &x as *const i32;
+    let z = unsafe { *y };
+    println!("{}", z);
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+fn main() {
+   let address = 0x012345usize;
+   let r = address as *const i32;
+   unsafe {
+      println!("{:?}", *r);
+   }
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+unsafe fn hihi() {}
+
+fn main() {
+   hihi()
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+unsafe fn hihi() {}
+
+fn main() {
+   unsafe {
+      hihi()
+   }
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+extern "C" {
+    fn abs(input: i32) -> i32;
+}
+
+fn main() {
+    unsafe {
+        println!("Absolute value of -3 according to C: {}", abs(-3));
+    }
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+static mut COUNTER: u32 = 0;
+
+fn main() {
+    unsafe {
+        COUNTER += 1;
+        println!("COUNTER: {}", COUNTER);
+    }
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+unsafe trait Foo {
+    // ..
+}
+
+unsafe impl Foo for i32 {
+    // ..
+}
+```
+
+---
+
+# Unsafe rust
+
+```rust
+#[repr(C)]
+union MyUnion {
+   f1: u32,
+   f2: f32,
+}
+
+fn main() {
+   let mut u = MyUnion { f1: 0 };
+   unsafe {
+      u.f2 = 1.0;
+      println!("{}", u.f2);
+      println!("{}", u.f1);
+   }
+}
+```
