@@ -9,7 +9,7 @@
 **4 XII** (8<sup>30</sup> - 10<sup>00</sup>) | **7 XII** (18<sup>00</sup> - 19<sup>30</sup>)
 
 **11 XII** (8<sup>30</sup> - 10<sup>00</sup>) |
-**18 XII** (8<sup>30</sup> - 10<sup>00</sup>, 16<sup>00</sup> - 17<sup>30</sup>)
+**18 XII** (8<sup>30</sup> - 10<sup>00</sup>, 18<sup>00</sup> - 19<sup>30</sup>)
 
 **8 I** (_zdalnie, termin do ustalenia_) |
 **22 I** (_zdalnie, termin do ustalenia_)
