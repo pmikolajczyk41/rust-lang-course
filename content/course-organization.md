@@ -115,6 +115,7 @@ Laboratoria:
 ### Slajdy
 
  - https://rust-lang-course.on.fleek.co/
+ - jako PDF: https://rust-lang-course.on.fleek.co/?print-pdf
  - [źródło](https://github.com/pmikolajczyk41/rust-lang-course)
 
  ---

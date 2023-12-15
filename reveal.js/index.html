@@ -21,6 +21,7 @@
         <section data-transition="none" data-markdown="content/syntax.md"></section>
         <section data-transition="none" data-markdown="content/project.md"></section>
         <section data-transition="none" data-markdown="content/macros.md"></section>
+        <section data-transition="none" data-markdown="content/async.md"></section>
     </div>
 </div>
 
@@ -32,10 +33,15 @@
 <script src="plugin/math/math.js"></script>
 <script src="plugin/search/search.js"></script>
 <script src="plugin/zoom/zoom.js"></script>
+<script src="plugin/menu/menu.js"></script>
 
 <script>
     Reveal.initialize({
         hash: true,
+
+        menu: {
+            hideMissingTitles: true,
+        },
 
         plugins: [
             RevealMarkdown,
@@ -44,6 +50,7 @@
             RevealNotes,
             RevealSearch,
             RevealZoom,
+            RevealMenu,
         ]
     });
 </script>
