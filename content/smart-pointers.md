@@ -223,6 +223,12 @@ fn main() {
 
 ---
 
+# Cells
+
+https://doc.rust-lang.org/std/cell/
+
+---
+
 # `RefCell<T>`
 
 mutowalna pamięć z regułami pożyczania sprawdzanymi w czasie wykonania
@@ -237,7 +243,7 @@ use std::cell::RefCell;
 fn main() {
     let x = RefCell::new(5);
     let y = x.borrow();
-    let z = x.borrow_mut(); // panic!
+    let z = x.borrow_mut();
 }
 ```
 
@@ -251,10 +257,6 @@ enum List {
     Cons(Rc<RefCell<i32>>, Rc<List>),
     Nil,
 }
-
-use crate::List::{Cons, Nil};
-use std::cell::RefCell;
-use std::rc::Rc;
 
 fn main() {
     let value = Rc::new(RefCell::new(5));
@@ -274,6 +276,27 @@ fn main() {
 
 ---
 
+# Cykl
+
+```rust
+#[derive(Debug)]
+struct Hehe {
+    a: Option<Rc<RefCell<Hehe>>>,
+}
+
+fn main() {
+    let s1 = Rc::new(RefCell::new(Hehe { a: None }));
+    let s2 = Rc::new(RefCell::new(Hehe { a: None }));
+
+    s2.borrow_mut().a = Some(s1.clone());
+    s1.borrow_mut().a = Some(s2.clone());
+
+    println!("{:?}", s1);
+}
+```
+
+---
+
 # `Weak<T>`
 
 ```rust
@@ -285,5 +308,23 @@ struct Node {
     value: i32,
     parent: RefCell<Weak<Node>>,
     children: RefCell<Vec<Rc<Node>>>,
+}
+```
+
+---
+
+# Drop
+
+```rust
+pub trait Drop {
+    /// Executes the destructor for this type.
+    ///
+    /// This method is called implicitly when the value goes out of scope,
+    /// and cannot be called explicitly (this is compiler error [E0040]).
+    /// However, the [`mem::drop`] function in the prelude can be
+    /// used to call the argument's `Drop` implementation.
+    ///
+    /// ...
+    fn drop(&mut self);
 }
 ```
