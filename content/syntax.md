@@ -616,7 +616,7 @@ fn fallible_function() -> Result<u32, String> {
 
 ---
 
-# Traity
+# Traity (cechy)
 
 ```rust
 trait LegOwner {
@@ -630,7 +630,7 @@ trait LegOwner {
 
 ---
 
-# Implementacja traitów
+# Implementacja traitów (implementacja cech)
 
 ```rust [9-17]
 trait LegOwner { /**/ }
@@ -686,7 +686,7 @@ struct S {
 
 ---
 
-# Scoping traitów
+# Scoping traitów (cech)
 
 ```rust
 trait A {
